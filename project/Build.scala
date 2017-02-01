@@ -24,10 +24,9 @@ object test {
   object Dependencies {
 
     lazy val library = Seq(
-   
-      "org.scala-js" %%%! "scalajs-dom" % Versions.scalaJsDom,
+      // "org.scala-js" %%%! "scalajs-dom" % Versions.scalaJsDom,
       "com.github.japgolly.scalajs-react" %%%! "core" % Versions.scalaJsReact,
-      "com.github.eldis" %%%! " scalajs-redux " % Versions.scalaJsRedux,
+      "com.github.eldis" %%%! "scalajs-redux" % Versions.scalaJsRedux,
       "org.scalatest" %%%! "scalatest" % Versions.scalatest % "test"
     )
 
