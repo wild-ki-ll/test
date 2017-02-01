@@ -19,12 +19,12 @@ object test {
     val redux = "~3.6.0"
     val reactRedux = "~5.0.2"
     val scalaJsRedux = "0.2.0-SNAPSHOT"
+    val reduxLogger = "~2.7.4"
   }
 
   object Dependencies {
 
     lazy val library = Seq(
-      // "org.scala-js" %%%! "scalajs-dom" % Versions.scalaJsDom,
       "com.github.japgolly.scalajs-react" %%%! "core" % Versions.scalaJsReact,
       "com.github.eldis" %%%! "scalajs-redux" % Versions.scalaJsRedux,
       "org.scalatest" %%%! "scalatest" % Versions.scalatest % "test"
@@ -34,7 +34,8 @@ object test {
       "react"               -> Versions.react,
       "react-dom"           -> Versions.react,
       "redux"               -> Versions.redux,
-      "react-redux"         -> Versions.reactRedux
+      "react-redux"         -> Versions.reactRedux,
+      "redux-logger"        -> Versions.reduxLogger
     )
 
     lazy val npmDevDep = npmDep ++ Seq(
