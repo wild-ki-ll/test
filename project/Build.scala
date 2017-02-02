@@ -20,14 +20,17 @@ object test {
     val reactRedux = "~5.0.2"
     val scalaJsRedux = "0.2.0-SNAPSHOT"
     val reduxLogger = "~2.7.4"
+    val reactReduxForm = "~1.5.3"
+    val scalaJsReactReduxForm = "0.1.0-SNAPSHOT"
   }
 
   object Dependencies {
 
     lazy val library = Seq(
-      "com.github.japgolly.scalajs-react" %%%! "core" % Versions.scalaJsReact,
-      "com.github.eldis" %%%! "scalajs-redux" % Versions.scalaJsRedux,
-      "org.scalatest" %%%! "scalatest" % Versions.scalatest % "test"
+      "com.github.japgolly.scalajs-react" %%%! "core"                     % Versions.scalaJsReact,
+      "com.github.eldis"                  %%%! "scalajs-redux"            % Versions.scalaJsRedux,
+      "org.scalatest"                     %%%! "scalatest"                % Versions.scalatest % "test",
+      "com.github.eldis"                  %%%! "scalajs-react-redux-form" % Versions.scalaJsReactReduxForm
     )
 
     lazy val npmDep = Seq(
@@ -35,7 +38,8 @@ object test {
       "react-dom"           -> Versions.react,
       "redux"               -> Versions.redux,
       "react-redux"         -> Versions.reactRedux,
-      "redux-logger"        -> Versions.reduxLogger
+      "redux-logger"        -> Versions.reduxLogger,
+      "react-redux-form"    -> Versions.reactReduxForm
     )
 
     lazy val npmDevDep = npmDep ++ Seq(

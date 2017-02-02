@@ -7,17 +7,7 @@ import org.scalajs.dom
 import js.annotation._
 import eldis.redux._
 import scala.concurrent.ExecutionContext.Implicits.global
-
-object Hello {
-
-  val component = ReactComponentB[Unit]("testComp")
-    .render { scope =>
-      <.div("Hello")
-    }.build
-
-  def apply() = component()
-
-}
+import rrf.impl
 
 object Main extends js.JSApp {
 
@@ -37,16 +27,17 @@ object Main extends js.JSApp {
     }
   }
 
-  def App(store: Store[js.Any, js.Any]): ReactElement = {
+  def App(store: Store[js.Any, impl.Action]): ReactElement = {
+    val form = TestForm()
     react.Provider(store)(
-      Hello()
+      form
     )
   }
 
   @JSImport("redux-logger", JSImport.Namespace)
   @js.native
   object createLogger extends js.Object {
-    def apply(): Middleware[js.Any, js.Any] = js.native
+    def apply(): Middleware[js.Any, impl.Action] = js.native
   }
 
   def main(): Unit = {
@@ -55,11 +46,12 @@ object Main extends js.JSApp {
     val store = createStore(
       (s: js.Any, a: js.Any) => s,
       js.undefined,
-      js.undefined,
+      impl.combineForms(js.Dynamic.literal(testForm = TestForm.initialState)),
       applyMiddleware(Seq(createLogger()))
     )
 
     ReactDOM.render(App(store), dom.document.getElementById("root"))
   }
+
 }
 
