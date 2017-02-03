@@ -27,6 +27,7 @@ object Main extends js.JSApp {
     }
   }
 
+<<<<<<< HEAD
   def App(store: Store[js.Any, impl.Action]): ReactElement = {
     val form = TestForm()
     react.Provider(store)(
@@ -38,6 +39,13 @@ object Main extends js.JSApp {
   @js.native
   object createLogger extends js.Object {
     def apply(): Middleware[js.Any, impl.Action] = js.native
+=======
+  object App {
+    def apply(store: Store[State, Action]) =
+      react.Provider(store)(
+        TestForm()
+      )
+>>>>>>> c792a71... simle sjs-rrf form - it works!
   }
 
   def main(): Unit = {
