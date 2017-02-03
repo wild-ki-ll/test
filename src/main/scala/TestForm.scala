@@ -16,9 +16,7 @@ object TestForm {
     onChangeUserName: String => Callback = String => Callback.empty
   )
 
-  case class State(
-    username: String = "someone"
-  )
+  case class State(username: String = "someone")
 
   val component = FunctionalComponent[Props] {
     props: Props =>
