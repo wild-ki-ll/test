@@ -48,6 +48,12 @@ object test {
     )
   }
 
+  def addCommandAliases(m: (String, String)*) = {
+    val s = m.map(p => addCommandAlias(p._1, p._2)).reduce(_ ++ _)
+    (_: Project).settings(s: _*)
+  }
+
+
   object Settings {
     type PC = Project => Project
 
@@ -64,7 +70,11 @@ object test {
           npmDevDependencies  in Compile ++= Dependencies.npmDevDep,
           webpackConfigFile in fastOptJS := Some(baseDirectory.value / "config" / "webpack.config.js"),
           webpackConfigFile in fullOptJS := Some(baseDirectory.value / "config" / "webpack.config.js")
-        )
+        ).configure(addCommandAliases(
+        "f"  -> "fastOptJS",
+        "cl" -> "clean",
+        "cp" -> "compile",
+        "fw" -> "fastOptJS::webpack"))
       }
 
   }
